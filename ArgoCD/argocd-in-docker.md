@@ -3,20 +3,18 @@
 - [Mục tiêu](#mục-tiêu)
 - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống-requirements)
 - [Chuẩn bị môi trường](#chuẩn-bị-môi-trường)
-  - [Kích hoạt WSL 2 Integration trong Docker Desktop](#1-kích-hoạt-wsl-2-integration-trong-docker-desktop)
+  - [Enable WSL 2 Integration trong Docker Desktop](#1-enable-wsl-2-integration-trong-docker-desktop)
 - [Cài đặt Minikube & kubectl](#cài-đặt-minikube--kubectl-trong-wsl-2)
   - [Cài đặt Minikube](#cài-đặt-minikube)
   - [Cài đặt kubectl](#cài-đặt-kubectl)
 - [Khởi chạy Minikube](#khởi-chạy-minikube)
 - [Kiểm tra trạng thái cluster](#kiểm-tra-trạng-thái-cluster)
 - [Cài đặt ArgoCD](#cài-đặt-argocd)
-  - [Tạo namespace cho ArgoCD](#1-tạo-namespace-cho-argocd)
-  - [Cài đặt các thành phần ArgoCD](#2-cài-đặt-các-thành-phần-argocd)
-  - [Theo dõi trạng thái Pod](#3-theo-dõi-trạng-thái-pod)
+  - [Tạo namespace cho ArgoCD](#tạo-namespace-cho-argocd)
+  - [Cài đặt ArgoCD](#cài-đặt-argocd-1)
 - [Truy cập ArgoCD UI](#truy-cập-argocd-ui)
-  - [Port Forward](#1-port-forward)
-  - [Truy cập trình duyệt](#2-truy-cập-trình-duyệt)
-  - [Thông tin đăng nhập](#3-thông-tin-đăng-nhập)
+  - [Port Forward](#port-forward)
+  - [Lấy mật khẩu admin](#lấy-mật-khẩu-admin)
 - [Best Practices](#best-practices)
 - [Tài liệu tham khảo](#tài-liệu-tham-khảo)
 
@@ -48,15 +46,15 @@ Tài liệu này phù hợp cho:
 
 ## Chuẩn bị môi trường
 
-### 1. Kích hoạt WSL 2 Integration trong Docker Desktop
+### 1. Enable WSL 2 Integration trong Docker Desktop
 
 1. Mở Docker Desktop
 2. Truy cập:
    ```
    Settings → Resources → WSL Integration
    ```
-3. Bật Enable integration with my default WSL distro
-4. Bật thêm cho distro Linux đang sử dụng (ví dụ: Ubuntu)
+3. Enable integration with my default WSL distro
+4. Enable distro Linux đang sử dụng (ví dụ: Ubuntu)
 5. Apply và Restart Docker Desktop
 
 ---
