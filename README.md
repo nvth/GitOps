@@ -1,2 +1,2 @@
 # GitOps
-ArgoCD và mọi thứ liên quan
+ArgoCD in Docker và mọi thứ liên quan
