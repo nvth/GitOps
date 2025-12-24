@@ -1,1 +1,1 @@
-Ez
+ArgoCD in Docker with minikube
