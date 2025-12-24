@@ -14,7 +14,6 @@
   - [Cài đặt ArgoCD](#cài-đặt-argocd-1)
 - [Truy cập ArgoCD UI](#truy-cập-argocd-ui)
   - [Port Forward](#port-forward)
-  - [Lấy mật khẩu admin](#lấy-mật-khẩu-admin)
 - [Best Practices](#best-practices)
 - [Tài liệu tham khảo](#tài-liệu-tham-khảo)
 
@@ -117,17 +116,26 @@ kubectl apply -n argocd   -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 ### Port Forward
 
+Port forwarding, sử dụng port khác 8080 tránh conflict với các dịch vụ khác
+
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 9889:443
 ```
 
 ---
+### Truy cập WebUI
+https://localhost:9889
 
-### Lấy mật khẩu admin
+### Thông tin đăng nhập
 
+**Username**: admin
+
+**Password**:
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret   -o jsonpath="{.data.password}" | base64 -d; echo
 ```
+Trạng thái đăng nhập thành công vào dashboard của ArgoCD
+<img width="1049" height="667" alt="image" src="https://github.com/user-attachments/assets/9770b840-c214-48a8-a55d-79668cc89a43" />
 
 ---
 
