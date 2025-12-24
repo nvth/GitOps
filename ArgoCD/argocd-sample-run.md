@@ -1,4 +1,4 @@
-# 🚀 Tạo Application trên Argo CD (Demo Guestbook)
+# Tạo Application trên Argo CD (Demo Guestbook)
 
 ## 1. Truy cập Argo CD UI
 - Vào **Application**
@@ -47,7 +47,7 @@ spec:
 
 ---
 
-📌 **Ghi chú**
+**Ghi chú**
 - Repo sử dụng: `argocd-example-apps`
 - Đây là ứng dụng mẫu chuẩn để test Argo CD hoạt động end-to-end
 - Phù hợp cho demo và kiểm tra pipeline GitOps
