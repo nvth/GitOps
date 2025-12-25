@@ -96,6 +96,9 @@ kubectl get nodes
 
 ## Cài đặt ArgoCD
 
+Automation script: [argocd.sh](https://github.com/nvth/GitOps/blob/master/ArgoCD/argocd.sh)
+
+Hoặc manual install từng bước
 ### Tạo namespace cho ArgoCD
 
 ```bash
