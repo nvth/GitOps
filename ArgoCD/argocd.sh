@@ -7,18 +7,18 @@ ARGOCD_PORT=9889
 echo "==> [1/6] Checking Minikube..."
 kubectl get nodes >/dev/null
 
-echo "==> [2/6] Create namespace argocd ..."
+echo "==> [2/6] Creating namespace argocd ..."
 kubectl get ns $NAMESPACE >/dev/null 2>&1 || kubectl create namespace $NAMESPACE
 
-echo "==> [3/6] Install Argo CD..."
+echo "==> [3/6] Installing Argo CD..."
 kubectl apply -n $NAMESPACE \
   -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-echo "==> [4/6] Waiting Argo CD pods all ready ..."
+echo "==> [4/6] Waiting for Argo CD pods to be ready..."
 kubectl wait --for=condition=Available deployment/argocd-server \
   -n $NAMESPACE --timeout=300s
 
-echo "==> [5/6] Get account admin..."
+echo "==> [5/6] Getting admin password..."
 ADMIN_PASS=$(kubectl get secret argocd-initial-admin-secret \
   -n $NAMESPACE -o jsonpath="{.data.password}" | base64 -d)
 
@@ -30,5 +30,5 @@ echo " Username : admin"
 echo " Password : ${ADMIN_PASS}"
 echo "----------------------------------------"
 
-echo "==> [6/6] Port-forward Argo CD"
+echo "==> [6/6] Port-forward Argo CD server to localhost:${ARGOCD_PORT} ..."
 kubectl port-forward svc/argocd-server -n $NAMESPACE ${ARGOCD_PORT}:443
