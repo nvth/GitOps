@@ -48,31 +48,39 @@ spec:
 ### Kết nối Git với ArgoCD step-by-step
 
   **Tạo New App trên giao diện Argo CD.** 
+  
+  ---
 
-    Tại phần `GENERAL`
+  Tại phần `GENERAL`
 
-      **Application Name**: gitops-lab
+  **Application Name**: gitops-lab
 
-      **Project Name**: default
+  **Project Name**: default
 
-      **Sync Policy**: Manual
+  **Sync Policy**: Manual
+
+  ---
 
   **Trỏ Source về GitHub repo và Destination (default) về cluster**
 
-    Tại phần `SOURCE`
+  Tại phần `SOURCE`
 
-      **Repository** URL: `.git` url
+  **Repository** URL: `.git` url
 
-      **Revision**: HEAD hoặc default
+  **Revision**: HEAD hoặc default
 
-      **Path**: . (. nếu `deployment.yml` nằm ngay ngoài thư mục root)
+  **Path**: . (. nếu `deployment.yml` nằm ngay ngoài thư mục root)
 
-    Tại phần `DESTINATION`
+  ---
 
-      **Cluster URL**: https://kubernetes.default.svc
 
-      **Namespace**: default
+  Tại phần `DESTINATION`
 
+  **Cluster URL**: https://kubernetes.default.svc
+
+  **Namespace**: default
+
+  ---
 
 **Hoặc import tệp tin yaml vào ArgoCD thực hiện cấu hình trên (IaC)**
 ```yaml
@@ -115,7 +123,8 @@ Lúc này:
 
 Lúc này **Argo CD** lập tức phát hiện và cảnh báo bằng màu vàng (**OutOfSync**).
 
-=> Hiểu thêm về Drift Detection và chứng minh Git là nguồn, mọi thay đổi không nằm trên Git đều được coi là tạm thờ
+=> Hiểu thêm về Drift Detection và chứng minh Git là nguồn, mọi thay đổi không nằm trên Git đều được coi là tạm thời
+
 => Luồng dữ liệu trong gitops là một chiều (Git -> Cluster).
 
 ### Self-Healing
