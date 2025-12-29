@@ -141,6 +141,76 @@ Trạng thái đăng nhập thành công vào dashboard của ArgoCD
 <img width="1049" height="667" alt="image" src="https://github.com/user-attachments/assets/9770b840-c214-48a8-a55d-79668cc89a43" />
 
 ---
+## ArgoCD CLI trên WSL (rất quan trọng, để sử dụng `argocd` cli)
+
+### 1. Tải bản mới nhất của Argo CD CLI
+```bash
+sudo curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+```
+
+### 2. Cấp quyền thực thi cho tệp vừa tải
+```bash
+sudo chmod +x /usr/local/bin/argocd
+```
+
+### 3. Kiểm tra argocd cli
+``````bash
+argocd version
+``````
+
+Kết quả như thế này là thành công
+```bash
+nvth@LAPTOP-530M3F5E:/mnt/c/Users/Admin$ argocd version
+argocd: v3.2.3+2b6251d
+  BuildDate: 2025-12-24T12:35:36Z
+  GitCommit: 2b6251dfedb54de40596272a73ed1fb19d740219
+  GitTreeState: clean
+  GoVersion: go1.25.0
+  Compiler: gc
+  Platform: linux/amd64
+{"level":"fatal","msg":"Argo CD server address unspecified","time":"2025-12-29T02:54:20Z"}
+```
+### 4. Kết nối ArgoCD cli với ArgoCD in Docker
+
+Vì ArgoCD trong lab này được cài tại Docker và port forward của nó là `9889`, nên địa chỉ sẽ là `localhost:9889`
+
+```bash
+argocd login localhost:9889 --username admin --password '!1111111' --insecure 
+```
+
+Kết quả mong muốn
+
+```bash
+nvth@LAPTOP-530M3F5E:/mnt/c/Users/Admin$ argocd login localhost:9889 --username admin --password '!1111111' --insecure
+'admin:login' logged in successfully
+Context 'localhost:9889' updated
+```
+Kiểm tra lại 1 lần nữa với `argo version`
+
+Kết quả mong muốn
+
+```bash
+nvth@LAPTOP-530M3F5E:/mnt/c/Users/Admin$ argocd version
+argocd: v3.2.3+2b6251d
+  BuildDate: 2025-12-24T12:35:36Z
+  GitCommit: 2b6251dfedb54de40596272a73ed1fb19d740219
+  GitTreeState: clean
+  GoVersion: go1.25.0
+  Compiler: gc
+  Platform: linux/amd64
+argocd-server: v3.2.3+2b6251d
+  BuildDate: 2025-12-24T12:10:11Z
+  GitCommit: 2b6251dfedb54de40596272a73ed1fb19d740219
+  GitTreeState: clean
+  GoVersion: go1.25.0
+  Compiler: gc
+  Platform: linux/amd64
+  Kustomize Version: v5.7.0 2025-06-28T07:00:07Z
+  Helm Version: v3.18.4+gd80839c
+  Kubectl Version: v0.34.0
+  Jsonnet Version: v0.21.0
+nvth@LAPTOP-530M3F5E:/mnt/c/Users/Admin$
+```
 
 ## Best Practices
 
